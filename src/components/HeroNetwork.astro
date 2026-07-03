@@ -1,0 +1,88 @@
+---
+// Hero graphic — "the human in the loop".
+// A layered node network (code-rendered SVG, $0) whose signal paths converge on
+// one lit orange node = the accountable human. Brand metaphor made a focal art piece.
+---
+
+<div class="hero-net" aria-hidden="true">
+  <svg viewBox="0 0 440 400" role="img">
+    <defs>
+      <radialGradient id="humanGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#f26c0d" stop-opacity="0.42" />
+        <stop offset="45%" stop-color="#f26c0d" stop-opacity="0.12" />
+        <stop offset="100%" stop-color="#f26c0d" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="spoke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#1a1410" stop-opacity="0.05" />
+        <stop offset="100%" stop-color="#1a1410" stop-opacity="0.28" />
+      </linearGradient>
+      <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="1.1" />
+      </filter>
+    </defs>
+
+    <!-- depth layer: faint, blurred background network -->
+    <g filter="url(#soft)" opacity="0.5" stroke="#c9c2b8" stroke-width="0.75" fill="#c9c2b8">
+      <path d="M110 120 L60 40 M110 120 L30 190 M300 60 L390 120 M330 330 L400 300 M150 350 L90 300" fill="none" />
+      <circle cx="60" cy="40" r="2" /><circle cx="30" cy="190" r="2" /><circle cx="390" cy="120" r="2" />
+      <circle cx="400" cy="300" r="2" /><circle cx="90" cy="300" r="2" /><circle cx="110" cy="120" r="2.5" />
+      <circle cx="300" cy="60" r="2.5" /><circle cx="330" cy="330" r="2.5" /><circle cx="150" cy="350" r="2" />
+    </g>
+
+    <!-- outer ring -->
+    <g stroke="#1a1410" stroke-opacity="0.1" stroke-width="1" fill="none">
+      <path d="M60 66 L185 44 L355 74 L410 196 L360 320 L200 362 L72 300 L46 168 Z" />
+    </g>
+
+    <!-- spokes into the human node -->
+    <g stroke="url(#spoke)" stroke-width="1.1" fill="none">
+      <path d="M225 200 L60 66" /><path d="M225 200 L185 44" /><path d="M225 200 L355 74" />
+      <path d="M225 200 L410 196" /><path d="M225 200 L360 320" /><path d="M225 200 L200 362" />
+      <path d="M225 200 L72 300" /><path d="M225 200 L46 168" /><path d="M225 200 L300 250" />
+      <path d="M225 200 L150 210" />
+    </g>
+
+    <!-- primary nodes -->
+    <g fill="#b0a89d">
+      <circle cx="60" cy="66" r="4.5" /><circle cx="185" cy="44" r="3.5" /><circle cx="355" cy="74" r="4.5" />
+      <circle cx="410" cy="196" r="3.5" /><circle cx="360" cy="320" r="4.5" /><circle cx="200" cy="362" r="3.5" />
+      <circle cx="72" cy="300" r="4.5" /><circle cx="46" cy="168" r="3.5" />
+      <circle cx="300" cy="250" r="3" /><circle cx="150" cy="210" r="3" />
+    </g>
+
+    <!-- the human / accountable centre -->
+    <circle cx="225" cy="200" r="42" fill="url(#humanGlow)" />
+    <circle class="ring" cx="225" cy="200" r="14" fill="none" stroke="#f26c0d" stroke-width="1.5" />
+    <circle class="ring ring2" cx="225" cy="200" r="14" fill="none" stroke="#f26c0d" stroke-width="1.5" />
+    <circle cx="225" cy="200" r="9.5" fill="#f26c0d" stroke="#f5f2ed" stroke-width="3" />
+  </svg>
+</div>
+
+<style>
+  .hero-net {
+    width: 100%;
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+  .hero-net svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .ring {
+    opacity: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .ring {
+      animation: hloop-pulse 3s cubic-bezier(0.2, 0.6, 0.2, 1) infinite;
+    }
+    .ring2 {
+      animation-delay: 1.5s;
+    }
+  }
+  @keyframes hloop-pulse {
+    0% { r: 12px; opacity: 0.55; }
+    70% { opacity: 0; }
+    100% { r: 40px; opacity: 0; }
+  }
+</style>

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import HeroNetwork from '../components/HeroNetwork.astro';
 
 const patterns = [
   {
@@ -77,24 +78,9 @@ npm run dev
         </div>
       </div>
 
-      <!-- Node-network motif: faint network, one warm node = the human -->
-      <div class="hidden md:block" data-reveal style="--d:.28s" aria-hidden="true">
-        <svg viewBox="0 0 320 300" class="w-full">
-          <g stroke="#d4cfc8" stroke-width="1" fill="none">
-            <path d="M40 60 L140 40 L250 90 M140 40 L160 150 M40 60 L90 180 M160 150 L90 180 M160 150 L270 200 M250 90 L270 200 M90 180 L150 260 M270 200 L200 260" />
-          </g>
-          <g fill="#b8b1a8">
-            <circle cx="40" cy="60" r="4" />
-            <circle cx="140" cy="40" r="4" />
-            <circle cx="250" cy="90" r="4" />
-            <circle cx="90" cy="180" r="4" />
-            <circle cx="270" cy="200" r="4" />
-            <circle cx="150" cy="260" r="4" />
-            <circle cx="200" cy="260" r="4" />
-          </g>
-          <!-- the human / accountable centre -->
-          <circle cx="160" cy="150" r="10" fill="#f26c0d" stroke="#f5f2ed" stroke-width="3" />
-        </svg>
+      <!-- Hero graphic: the human-in-the-loop network -->
+      <div class="hidden md:block" data-reveal style="--d:.28s">
+        <HeroNetwork />
       </div>
     </div>
   </section>
