@@ -46,18 +46,22 @@ npm run dev
   <section class="relative overflow-hidden">
     <div class="mx-auto grid max-w-5xl items-center gap-10 px-6 pt-20 pb-16 md:grid-cols-[1.35fr_1fr]">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-muted" data-reveal>
           EU AI Act · Article 50 · enforceable 2 August 2026
         </p>
-        <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] text-ink md:text-7xl">
+        <h1
+          class="mt-4 font-display text-5xl font-semibold leading-[1.02] text-ink md:text-7xl"
+          data-reveal
+          style="--d:.07s"
+        >
           Transparency, built into the <em class="italic text-orange">interface</em>.
         </h1>
-        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted" data-reveal style="--d:.14s">
           Four accessible React components for the parts of the EU AI Act that live in the UI — AI
           disclosure, content labelling, emotion-recognition notice, and a human-in-the-loop review gate.
           WCAG 2.1 AA. MIT licensed.
         </p>
-        <div class="mt-8 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3" data-reveal style="--d:.21s">
           <a
             href="#patterns"
             class="inline-flex items-center rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-orange"
@@ -74,7 +78,7 @@ npm run dev
       </div>
 
       <!-- Node-network motif: faint network, one warm node = the human -->
-      <div class="hidden md:block" aria-hidden="true">
+      <div class="hidden md:block" data-reveal style="--d:.28s" aria-hidden="true">
         <svg viewBox="0 0 320 300" class="w-full">
           <g stroke="#d4cfc8" stroke-width="1" fill="none">
             <path d="M40 60 L140 40 L250 90 M140 40 L160 150 M40 60 L90 180 M160 150 L90 180 M160 150 L270 200 M250 90 L270 200 M90 180 L150 260 M270 200 L200 260" />
@@ -96,9 +100,9 @@ npm run dev
   </section>
 
   <!-- WHY -->
-  <section class="border-y border-line bg-surface/50">
+  <section class="border-y border-line bg-surface/40">
     <div class="mx-auto max-w-5xl px-6 py-12">
-      <p class="max-w-3xl text-lg leading-relaxed text-ink">
+      <p class="measure text-lg leading-relaxed text-ink">
         Article 50 compliance is not a legal document — it is buttons, labels, notices, and review
         steps a person actually sees. These are the interface patterns, built to the accessibility
         standard the law itself points to, ready to drop into a React or Astro product.
@@ -106,28 +110,42 @@ npm run dev
     </div>
   </section>
 
-  <!-- PATTERNS -->
+  <!-- PATTERNS — editorial contents index -->
   <section id="patterns" aria-labelledby="patterns-heading" class="mx-auto max-w-5xl px-6 py-16">
-    <h2 id="patterns-heading" class="font-display text-3xl font-semibold text-ink">The patterns</h2>
-    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 id="patterns-heading" class="font-display text-3xl font-semibold text-ink">The patterns</h2>
+      <span class="font-mono text-xs tabular-nums text-muted">Four components</span>
+    </div>
+
+    <ol class="mt-10 border-t border-line">
       {
-        patterns.map((p) => (
-          <a
-            href={p.href}
-            class="group flex flex-col rounded-xl border border-line bg-paper p-6 transition-colors hover:border-orange"
-          >
-            <span class="text-xs font-semibold uppercase tracking-[0.22em] text-orange">{p.article}</span>
-            <span class="mt-3 font-display text-2xl font-semibold text-ink">
-              {p.name} <em class="italic text-orange">{p.accent}</em>
-            </span>
-            <span class="mt-2 text-muted">{p.blurb}</span>
-            <span class="mt-4 text-sm font-semibold text-ink group-hover:text-orange">
-              Open pattern →
-            </span>
-          </a>
+        patterns.map((p, i) => (
+          <li>
+            <a
+              href={p.href}
+              class="group grid grid-cols-[auto_1fr_auto] items-baseline gap-x-6 border-b border-line py-7 transition-colors hover:bg-surface/50"
+            >
+              <span class="font-mono text-sm tabular-nums text-orange">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <h3 class="font-display text-2xl font-semibold text-ink">
+                    {p.name} <em class="italic text-orange">{p.accent}</em>
+                  </h3>
+                  <span class="text-xs font-semibold uppercase tracking-[0.22em] text-muted">{p.article}</span>
+                </div>
+                <p class="mt-2 max-w-xl text-muted">{p.blurb}</p>
+              </div>
+              <span
+                class="text-lg text-muted transition-all group-hover:translate-x-1 group-hover:text-orange"
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </a>
+          </li>
         ))
       }
-    </div>
+    </ol>
   </section>
 
   <!-- INSTALL -->

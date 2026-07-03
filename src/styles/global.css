@@ -23,9 +23,11 @@
    BASE + ACCESSIBILITY PRIMITIVES (WCAG 2.1 AA)
    ───────────────────────────────────────────────────────────── */
 html {
+  /* Radial ivory gradient (brand), painted over the full page.
+     Note: we deliberately avoid `background-attachment: fixed`, which causes
+     scroll-jank inside embedded webviews such as VS Code's Simple Browser. */
   background:
-    radial-gradient(ellipse 80% 70% at 50% 38%, var(--color-paper-core), var(--color-paper));
-  background-attachment: fixed;
+    radial-gradient(ellipse 90% 55% at 50% 22%, var(--color-paper-core), var(--color-paper));
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -88,3 +90,48 @@ body {
 .code .tok-key { color: #f7a86a; }
 .code .tok-str { color: #c9d7a7; }
 .code .tok-cmt { color: #9a9187; font-style: italic; }
+
+/* ─────────────────────────────────────────────────────────────
+   THE CRAFT LAYER — texture, motion, editorial detail
+   ───────────────────────────────────────────────────────────── */
+
+/* Paper grain: ~5% fractal noise over the whole canvas, behind content.
+   Turns "flat digital" into "crafted print". Decorative, pointer-inert. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+header,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Warm ink-orange selection */
+::selection {
+  background: color-mix(in oklab, var(--color-orange) 28%, transparent);
+  color: var(--color-ink);
+}
+
+/* One orchestrated entrance — only when motion is welcome.
+   Guarded so reduced-motion users see everything immediately (never stuck hidden). */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    animation: reveal 0.7s cubic-bezier(0.2, 0.6, 0.1, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+}
+
+/* Comfortable reading measure for long prose */
+.measure { max-width: 68ch; }

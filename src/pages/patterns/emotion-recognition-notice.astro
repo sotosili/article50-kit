@@ -1,5 +1,6 @@
 ---
 import Pattern from '../../layouts/Pattern.astro';
+import Section from '../../components/Section.astro';
 import EmotionRecognitionNoticeDemo from '../../components/demos/EmotionRecognitionNoticeDemo.tsx';
 
 const usage = `import EmotionRecognitionNotice from './kit/EmotionRecognitionNotice';
@@ -14,27 +15,24 @@ const usage = `import EmotionRecognitionNotice from './kit/EmotionRecognitionNot
 ---
 
 <Pattern
+  index="03"
   article="Article 50(3)"
   name="Emotion Recognition"
   accent="Notice"
   intro="When an emotion-recognition or biometric-categorisation system is used, the people exposed to it must be informed of its operation. This notice does that before the system acts on them, and stays visible afterwards."
+  duty="Inform people when an emotion-recognition or biometric-categorisation system is applied to them, before it acts."
 >
-  <section aria-labelledby="playground">
-    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
-    <p class="mt-2 text-muted">Acknowledge the notice, then reset it to see the full flow.</p>
-    <div class="mt-6">
-      <EmotionRecognitionNoticeDemo client:load />
-    </div>
-  </section>
+  <Section n="01" id="playground" title="Playground">
+    <p class="-mt-1 mb-6 text-muted">Acknowledge the notice, then reset it to see the full flow.</p>
+    <EmotionRecognitionNoticeDemo client:load />
+  </Section>
 
-  <section aria-labelledby="usage">
-    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
-    <pre class="code mt-4">{usage}</pre>
-  </section>
+  <Section n="02" id="usage" title="Usage">
+    <pre class="code">{usage}</pre>
+  </Section>
 
-  <section aria-labelledby="props">
-    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
-    <div class="mt-4 overflow-x-auto">
+  <Section n="03" id="props" title="Props">
+    <div class="overflow-x-auto">
       <table class="w-full min-w-[560px] border-collapse text-sm">
         <thead>
           <tr class="border-b border-line text-left text-muted">
@@ -52,15 +50,14 @@ const usage = `import EmotionRecognitionNotice from './kit/EmotionRecognitionNot
         </tbody>
       </table>
     </div>
-  </section>
+  </Section>
 
-  <section aria-labelledby="a11y">
-    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility</h2>
-    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+  <Section n="04" id="a11y" title="Accessibility">
+    <ul class="list-disc space-y-2 pl-5 text-ink">
       <li>Rendered as a labelled <code>region</code> with a real heading — <strong>not</strong> a modal, so it never traps keyboard focus.</li>
       <li>Acknowledgement is a genuine <code>&lt;button&gt;</code>; on confirm it collapses to a persistent <code>role="status"</code> indicator.</li>
       <li>The duty to inform does not end on dismissal, so the slim indicator stays visible.</li>
       <li>Text carries the meaning; the eye icon is decorative.</li>
     </ul>
-  </section>
+  </Section>
 </Pattern>

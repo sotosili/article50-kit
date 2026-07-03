@@ -1,5 +1,6 @@
 ---
 import Pattern from '../../layouts/Pattern.astro';
+import Section from '../../components/Section.astro';
 import HumanReviewGateDemo from '../../components/demos/HumanReviewGateDemo.tsx';
 
 const usage = `import HumanReviewGate from './kit/HumanReviewGate';
@@ -17,27 +18,24 @@ const usage = `import HumanReviewGate from './kit/HumanReviewGate';
 ---
 
 <Pattern
+  index="04"
   article="The accountable layer"
   name="Human Review"
   accent="Gate"
   intro="AI proposes; a named human decides. This gate holds an AI-suggested action until a person approves, edits, or rejects it — the human-in-the-loop control that turns automation into accountable automation."
+  duty="Not a clause on its own — the human-in-the-loop control that keeps AI actions reviewable and accountable to a named person."
 >
-  <section aria-labelledby="playground">
-    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
-    <p class="mt-2 text-muted">Lower the confidence to see the low-confidence flag, then approve or reject.</p>
-    <div class="mt-6">
-      <HumanReviewGateDemo client:load />
-    </div>
-  </section>
+  <Section n="01" id="playground" title="Playground">
+    <p class="-mt-1 mb-6 text-muted">Lower the confidence to see the low-confidence flag, then approve or reject.</p>
+    <HumanReviewGateDemo client:load />
+  </Section>
 
-  <section aria-labelledby="usage">
-    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
-    <pre class="code mt-4">{usage}</pre>
-  </section>
+  <Section n="02" id="usage" title="Usage">
+    <pre class="code">{usage}</pre>
+  </Section>
 
-  <section aria-labelledby="props">
-    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
-    <div class="mt-4 overflow-x-auto">
+  <Section n="03" id="props" title="Props">
+    <div class="overflow-x-auto">
       <table class="w-full min-w-[560px] border-collapse text-sm">
         <thead>
           <tr class="border-b border-line text-left text-muted">
@@ -56,16 +54,15 @@ const usage = `import HumanReviewGate from './kit/HumanReviewGate';
         </tbody>
       </table>
     </div>
-  </section>
+  </Section>
 
-  <section aria-labelledby="a11y">
-    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility</h2>
-    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+  <Section n="04" id="a11y" title="Accessibility">
+    <ul class="list-disc space-y-2 pl-5 text-ink">
       <li>Confidence is a <code>role="meter"</code> with <code>aria-valuetext</code>, shown as a percentage and a bar — never colour alone.</li>
       <li>Low confidence is flagged with an icon <em>and</em> the words &ldquo;Low confidence — review carefully&rdquo;.</li>
       <li>The resolution is announced through a <code>role="status"</code> live region.</li>
       <li>Reject-with-reason uses a properly labelled <code>textarea</code>; confirm is disabled until a reason is given.</li>
       <li>Every action is a real, focusable button with a visible focus ring.</li>
     </ul>
-  </section>
+  </Section>
 </Pattern>

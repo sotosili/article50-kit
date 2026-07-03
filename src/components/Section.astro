@@ -1,0 +1,23 @@
+---
+interface Props {
+  /** Two-digit section number, e.g. "01". */
+  n: string;
+  /** Total sections on the page, e.g. "04". */
+  total?: string;
+  id: string;
+  title: string;
+}
+const { n, total = '04', id, title } = Astro.props;
+---
+
+<section aria-labelledby={id}>
+  <div class="flex items-center gap-4">
+    <span class="font-mono text-xs tabular-nums text-orange">{n}</span>
+    <span class="text-xs tabular-nums text-muted">/ {total}</span>
+    <span class="h-px flex-1 bg-line"></span>
+  </div>
+  <h2 id={id} class="mt-4 font-display text-3xl font-semibold text-ink">{title}</h2>
+  <div class="mt-6">
+    <slot />
+  </div>
+</section>
