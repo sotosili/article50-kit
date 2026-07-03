@@ -1,0 +1,68 @@
+---
+import Pattern from '../../layouts/Pattern.astro';
+import AIContentLabelDemo from '../../components/demos/AIContentLabelDemo.tsx';
+
+const usage = `import AIContentLabel from './kit/AIContentLabel';
+
+// Caption under a generated image
+<figure>
+  <img src={url} alt="…" />
+  <figcaption>
+    <AIContentLabel status="ai-generated" mediaType="image" />
+  </figcaption>
+</figure>
+
+// Overlay badge on a deepfake video
+<AIContentLabel status="ai-edited" mediaType="video" variant="overlay" />`;
+---
+
+<Pattern
+  article="Article 50(4)"
+  name="AI Content"
+  accent="Label"
+  intro="Mark AI-generated or AI-manipulated content — including deepfakes — as artificial, in a way both people and machines can detect. Article 50(4) has no transition period for new content, which makes this the most time-sensitive pattern in the kit."
+>
+  <section aria-labelledby="playground">
+    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
+    <p class="mt-2 text-muted">Pick a status, media type, and placement. The machine-readable markup updates with it.</p>
+    <div class="mt-6">
+      <AIContentLabelDemo client:load />
+    </div>
+  </section>
+
+  <section aria-labelledby="usage">
+    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
+    <pre class="code mt-4">{usage}</pre>
+  </section>
+
+  <section aria-labelledby="props">
+    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line text-left text-muted">
+            <th class="py-2 pr-4 font-semibold">Prop</th>
+            <th class="py-2 pr-4 font-semibold">Type</th>
+            <th class="py-2 font-semibold">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-ink">
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">status</td><td class="py-2 pr-4 font-mono text-xs">'ai-generated' | 'ai-assisted' | 'ai-edited'</td><td class="py-2">What was done. Default <code>ai-generated</code>.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">mediaType</td><td class="py-2 pr-4 font-mono text-xs">'image' | 'video' | 'audio' | 'text'</td><td class="py-2">Drives the icon and machine-readable attribute.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">variant</td><td class="py-2 pr-4 font-mono text-xs">'overlay' | 'caption'</td><td class="py-2">Overlay sits on the media; caption sits beside it.</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">detail</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">Optional extra, e.g. the tool or model used.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y">
+    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility &amp; detectability</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+      <li><strong>Visible</strong> label a person can read, plus an <code>aria-label</code> with the full sentence for screen readers.</li>
+      <li><strong>Machine-readable</strong> via <code>data-ai-content</code> and <code>data-ai-media</code> attributes other software can detect.</li>
+      <li>The overlay variant sits on an ink scrim at 85% opacity to keep text contrast at AA over any image.</li>
+      <li>Pair it with your provenance signal (e.g. C2PA / watermarking) — the label is the human-facing half.</li>
+    </ul>
+  </section>
+</Pattern>

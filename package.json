@@ -1,0 +1,31 @@
+{
+  "name": "article50-kit",
+  "type": "module",
+  "version": "0.1.0",
+  "description": "Accessible, WCAG 2.1 AA React components for EU AI Act Article 50 transparency — AI disclosure, AI-content labelling, emotion-recognition notice, and a human-in-the-loop review gate.",
+  "author": "Sotiris Iliadis",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "5.0.3",
+    "@tailwindcss/vite": "4.2.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "6.1.5",
+    "lucide-react": "^1.8.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "tailwindcss": "4.2.2"
+  },
+  "overrides": {
+    "vite": "7.3.2"
+  }
+}

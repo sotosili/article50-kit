@@ -1,0 +1,66 @@
+---
+import Pattern from '../../layouts/Pattern.astro';
+import EmotionRecognitionNoticeDemo from '../../components/demos/EmotionRecognitionNoticeDemo.tsx';
+
+const usage = `import EmotionRecognitionNotice from './kit/EmotionRecognitionNotice';
+
+<EmotionRecognitionNotice
+  system="Bright Support"
+  dataProcessed={['facial expression', 'tone of voice']}
+  active={emotionAIEnabled}
+  infoHref="/privacy/emotion-ai"
+  onAcknowledge={() => log('notice acknowledged')}
+/>`;
+---
+
+<Pattern
+  article="Article 50(3)"
+  name="Emotion Recognition"
+  accent="Notice"
+  intro="When an emotion-recognition or biometric-categorisation system is used, the people exposed to it must be informed of its operation. This notice does that before the system acts on them, and stays visible afterwards."
+>
+  <section aria-labelledby="playground">
+    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
+    <p class="mt-2 text-muted">Acknowledge the notice, then reset it to see the full flow.</p>
+    <div class="mt-6">
+      <EmotionRecognitionNoticeDemo client:load />
+    </div>
+  </section>
+
+  <section aria-labelledby="usage">
+    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
+    <pre class="code mt-4">{usage}</pre>
+  </section>
+
+  <section aria-labelledby="props">
+    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line text-left text-muted">
+            <th class="py-2 pr-4 font-semibold">Prop</th>
+            <th class="py-2 pr-4 font-semibold">Type</th>
+            <th class="py-2 font-semibold">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-ink">
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">system</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">Name of the service doing the recognition.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">dataProcessed</td><td class="py-2 pr-4 font-mono text-xs">string[]</td><td class="py-2">What is read, e.g. facial expression, tone of voice.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">active</td><td class="py-2 pr-4 font-mono text-xs">boolean</td><td class="py-2">When false, nothing renders.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">acknowledged</td><td class="py-2 pr-4 font-mono text-xs">boolean</td><td class="py-2">Optional controlled state; otherwise managed internally.</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">onAcknowledge</td><td class="py-2 pr-4 font-mono text-xs">() =&gt; void</td><td class="py-2">Fires when the person confirms they understand.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y">
+    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+      <li>Rendered as a labelled <code>region</code> with a real heading — <strong>not</strong> a modal, so it never traps keyboard focus.</li>
+      <li>Acknowledgement is a genuine <code>&lt;button&gt;</code>; on confirm it collapses to a persistent <code>role="status"</code> indicator.</li>
+      <li>The duty to inform does not end on dismissal, so the slim indicator stays visible.</li>
+      <li>Text carries the meaning; the eye icon is decorative.</li>
+    </ul>
+  </section>
+</Pattern>

@@ -1,0 +1,66 @@
+---
+import Pattern from '../../layouts/Pattern.astro';
+import AIDisclosureBadgeDemo from '../../components/demos/AIDisclosureBadgeDemo.tsx';
+
+const usage = `import AIDisclosureBadge from './kit/AIDisclosureBadge';
+
+// A chip beside an AI-authored message
+<AIDisclosureBadge />
+
+// A full banner at the top of a chat
+<AIDisclosureBadge
+  variant="banner"
+  infoHref="/how-our-assistant-works"
+/>`;
+---
+
+<Pattern
+  article="Article 50(1)"
+  name="AI Disclosure"
+  accent="Badge"
+  intro="Tell people, clearly, that they are interacting with an AI system. Article 50(1) requires this wherever it would not already be obvious — chat, voice, generated replies, agents."
+>
+  <section aria-labelledby="playground">
+    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
+    <p class="mt-2 text-muted">Change the variant and see the badge in a live assistant message.</p>
+    <div class="mt-6">
+      <AIDisclosureBadgeDemo client:load />
+    </div>
+  </section>
+
+  <section aria-labelledby="usage">
+    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
+    <pre class="code mt-4">{usage}</pre>
+  </section>
+
+  <section aria-labelledby="props">
+    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line text-left text-muted">
+            <th class="py-2 pr-4 font-semibold">Prop</th>
+            <th class="py-2 pr-4 font-semibold">Type</th>
+            <th class="py-2 font-semibold">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-ink">
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">variant</td><td class="py-2 pr-4 font-mono text-xs">'chip' | 'inline' | 'banner'</td><td class="py-2">Visual form. Default <code>chip</code>.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">label</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">Short visible text. Default <code>"AI"</code>.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">description</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">Full sentence read by screen readers; shown in the banner.</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">infoHref</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">Optional link explaining how the AI works.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y">
+    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+      <li>Uses <code>role="note"</code> so it is announced as an aside, not skipped as decoration.</li>
+      <li>The full disclosure sentence is always in the accessibility tree, even when the visible label is a short chip.</li>
+      <li>The sparkle icon is <code>aria-hidden</code> — meaning never depends on the icon or colour alone.</li>
+      <li>When <code>infoHref</code> is set, the link is keyboard focusable with a visible focus ring.</li>
+    </ul>
+  </section>
+</Pattern>

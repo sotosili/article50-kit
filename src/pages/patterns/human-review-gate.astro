@@ -1,0 +1,71 @@
+---
+import Pattern from '../../layouts/Pattern.astro';
+import HumanReviewGateDemo from '../../components/demos/HumanReviewGateDemo.tsx';
+
+const usage = `import HumanReviewGate from './kit/HumanReviewGate';
+
+<HumanReviewGate
+  title="Send refund of €240 to customer"
+  confidence={0.52}
+  requireReasonOnReject
+  onApprove={commitRefund}
+  onReject={(reason) => logRejection(reason)}
+  onEdit={openEditor}
+>
+  The model matched two identical charges and proposes refunding the second.
+</HumanReviewGate>`;
+---
+
+<Pattern
+  article="The accountable layer"
+  name="Human Review"
+  accent="Gate"
+  intro="AI proposes; a named human decides. This gate holds an AI-suggested action until a person approves, edits, or rejects it — the human-in-the-loop control that turns automation into accountable automation."
+>
+  <section aria-labelledby="playground">
+    <h2 id="playground" class="font-display text-2xl font-semibold text-ink">Playground</h2>
+    <p class="mt-2 text-muted">Lower the confidence to see the low-confidence flag, then approve or reject.</p>
+    <div class="mt-6">
+      <HumanReviewGateDemo client:load />
+    </div>
+  </section>
+
+  <section aria-labelledby="usage">
+    <h2 id="usage" class="font-display text-2xl font-semibold text-ink">Usage</h2>
+    <pre class="code mt-4">{usage}</pre>
+  </section>
+
+  <section aria-labelledby="props">
+    <h2 id="props" class="font-display text-2xl font-semibold text-ink">Props</h2>
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full min-w-[560px] border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line text-left text-muted">
+            <th class="py-2 pr-4 font-semibold">Prop</th>
+            <th class="py-2 pr-4 font-semibold">Type</th>
+            <th class="py-2 font-semibold">Notes</th>
+          </tr>
+        </thead>
+        <tbody class="text-ink">
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">title</td><td class="py-2 pr-4 font-mono text-xs">string</td><td class="py-2">What is being reviewed.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">children</td><td class="py-2 pr-4 font-mono text-xs">ReactNode</td><td class="py-2">The AI-proposed output/action shown for review.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">confidence</td><td class="py-2 pr-4 font-mono text-xs">number (0–1)</td><td class="py-2">Shown as a <code>meter</code>; low values are flagged.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">lowConfidenceThreshold</td><td class="py-2 pr-4 font-mono text-xs">number</td><td class="py-2">Below this, the proposal is flagged. Default <code>0.6</code>.</td></tr>
+          <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-xs">requireReasonOnReject</td><td class="py-2 pr-4 font-mono text-xs">boolean</td><td class="py-2">Force a written reason. Default <code>true</code>.</td></tr>
+          <tr><td class="py-2 pr-4 font-mono text-xs">onApprove / onReject / onEdit</td><td class="py-2 pr-4 font-mono text-xs">callbacks</td><td class="py-2">Wire to your real action. <code>onReject</code> receives the reason.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="a11y">
+    <h2 id="a11y" class="font-display text-2xl font-semibold text-ink">Accessibility</h2>
+    <ul class="mt-4 list-disc space-y-2 pl-5 text-ink">
+      <li>Confidence is a <code>role="meter"</code> with <code>aria-valuetext</code>, shown as a percentage and a bar — never colour alone.</li>
+      <li>Low confidence is flagged with an icon <em>and</em> the words &ldquo;Low confidence — review carefully&rdquo;.</li>
+      <li>The resolution is announced through a <code>role="status"</code> live region.</li>
+      <li>Reject-with-reason uses a properly labelled <code>textarea</code>; confirm is disabled until a reason is given.</li>
+      <li>Every action is a real, focusable button with a visible focus ring.</li>
+    </ul>
+  </section>
+</Pattern>

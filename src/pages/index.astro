@@ -1,0 +1,151 @@
+---
+import Base from '../layouts/Base.astro';
+
+const patterns = [
+  {
+    href: '/patterns/ai-disclosure-badge',
+    article: 'Article 50(1)',
+    name: 'AI Disclosure',
+    accent: 'Badge',
+    blurb: 'Tell people they are interacting with an AI system — clearly and distinguishably.',
+  },
+  {
+    href: '/patterns/ai-content-label',
+    article: 'Article 50(4)',
+    name: 'AI Content',
+    accent: 'Label',
+    blurb: 'Mark generated or manipulated content — including deepfakes — for people and machines.',
+  },
+  {
+    href: '/patterns/emotion-recognition-notice',
+    article: 'Article 50(3)',
+    name: 'Emotion Recognition',
+    accent: 'Notice',
+    blurb: 'Inform people exposed to emotion-recognition or biometric-categorisation systems.',
+  },
+  {
+    href: '/patterns/human-review-gate',
+    article: 'The accountable layer',
+    name: 'Human Review',
+    accent: 'Gate',
+    blurb: 'Hold an AI-proposed action until a named human approves, edits, or rejects it.',
+  },
+];
+
+const install = `# clone and run
+git clone https://github.com/…/article50-kit
+cd article50-kit
+npm install
+npm run dev
+
+# or copy a single component from src/components/kit/`;
+---
+
+<Base>
+  <!-- HERO -->
+  <section class="relative overflow-hidden">
+    <div class="mx-auto grid max-w-5xl items-center gap-10 px-6 pt-20 pb-16 md:grid-cols-[1.35fr_1fr]">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.28em] text-muted">
+          EU AI Act · Article 50 · enforceable 2 August 2026
+        </p>
+        <h1 class="mt-4 font-display text-5xl font-semibold leading-[1.02] text-ink md:text-7xl">
+          Transparency, built into the <em class="italic text-orange">interface</em>.
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+          Four accessible React components for the parts of the EU AI Act that live in the UI — AI
+          disclosure, content labelling, emotion-recognition notice, and a human-in-the-loop review gate.
+          WCAG 2.1 AA. MIT licensed.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="#patterns"
+            class="inline-flex items-center rounded-lg bg-ink px-5 py-2.5 text-sm font-semibold text-paper transition-colors hover:bg-orange"
+          >
+            Explore the patterns
+          </a>
+          <a
+            href="https://github.com/"
+            class="inline-flex items-center rounded-lg border border-line bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:bg-surface"
+          >
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Node-network motif: faint network, one warm node = the human -->
+      <div class="hidden md:block" aria-hidden="true">
+        <svg viewBox="0 0 320 300" class="w-full">
+          <g stroke="#d4cfc8" stroke-width="1" fill="none">
+            <path d="M40 60 L140 40 L250 90 M140 40 L160 150 M40 60 L90 180 M160 150 L90 180 M160 150 L270 200 M250 90 L270 200 M90 180 L150 260 M270 200 L200 260" />
+          </g>
+          <g fill="#b8b1a8">
+            <circle cx="40" cy="60" r="4" />
+            <circle cx="140" cy="40" r="4" />
+            <circle cx="250" cy="90" r="4" />
+            <circle cx="90" cy="180" r="4" />
+            <circle cx="270" cy="200" r="4" />
+            <circle cx="150" cy="260" r="4" />
+            <circle cx="200" cy="260" r="4" />
+          </g>
+          <!-- the human / accountable centre -->
+          <circle cx="160" cy="150" r="10" fill="#f26c0d" stroke="#f5f2ed" stroke-width="3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="border-y border-line bg-surface/50">
+    <div class="mx-auto max-w-5xl px-6 py-12">
+      <p class="max-w-3xl text-lg leading-relaxed text-ink">
+        Article 50 compliance is not a legal document — it is buttons, labels, notices, and review
+        steps a person actually sees. These are the interface patterns, built to the accessibility
+        standard the law itself points to, ready to drop into a React or Astro product.
+      </p>
+    </div>
+  </section>
+
+  <!-- PATTERNS -->
+  <section id="patterns" aria-labelledby="patterns-heading" class="mx-auto max-w-5xl px-6 py-16">
+    <h2 id="patterns-heading" class="font-display text-3xl font-semibold text-ink">The patterns</h2>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        patterns.map((p) => (
+          <a
+            href={p.href}
+            class="group flex flex-col rounded-xl border border-line bg-paper p-6 transition-colors hover:border-orange"
+          >
+            <span class="text-xs font-semibold uppercase tracking-[0.22em] text-orange">{p.article}</span>
+            <span class="mt-3 font-display text-2xl font-semibold text-ink">
+              {p.name} <em class="italic text-orange">{p.accent}</em>
+            </span>
+            <span class="mt-2 text-muted">{p.blurb}</span>
+            <span class="mt-4 text-sm font-semibold text-ink group-hover:text-orange">
+              Open pattern →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section aria-labelledby="install-heading" class="mx-auto max-w-5xl px-6 pb-8">
+    <h2 id="install-heading" class="font-display text-3xl font-semibold text-ink">Get started</h2>
+    <div class="mt-6 grid gap-6 md:grid-cols-2">
+      <pre class="code">{install}</pre>
+      <div class="text-ink">
+        <p class="leading-relaxed">
+          Built with Astro, React, and Tailwind — the same stack the components target. Each component is
+          a single self-contained file under <code>src/components/kit/</code>, so you can copy one in or use
+          the set.
+        </p>
+        <p class="mt-4 leading-relaxed text-muted">
+          These are engineering patterns, not legal advice. They help you meet Article 50 duties in the
+          interface; confirm your specific obligations with qualified counsel.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

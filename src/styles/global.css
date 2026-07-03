@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────
+   BRAND TOKENS — Sotiris Iliadis (source: BRAND-KIT.md)
+   ivory + ink do 95% of the work; orange is a single spark.
+   ───────────────────────────────────────────────────────────── */
+@theme {
+  --color-paper: #f5f2ed;        /* warm ivory canvas, never white */
+  --color-paper-core: #f0ece6;   /* radial gradient centre */
+  --color-ink: #1a1410;          /* warm near-black, never pure black */
+  --color-orange: #f26c0d;       /* THE accent — used sparingly */
+  --color-orange-soft: #fbe4d2;  /* orange tint for low-emphasis fills */
+  --color-blue: #0d5eaf;         /* rare structural second accent */
+  --color-muted: #6b6560;        /* subheads, meta */
+  --color-line: #d4cfc8;         /* hairlines, separators */
+  --color-surface: #ede9e3;      /* cards on paper */
+
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BASE + ACCESSIBILITY PRIMITIVES (WCAG 2.1 AA)
+   ───────────────────────────────────────────────────────────── */
+html {
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 38%, var(--color-paper-core), var(--color-paper));
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Visible, on-brand focus ring for every interactive element (WCAG 2.4.7) */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Respect users who ask for less motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link — first tab stop, jumps past the header (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 60;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.4rem;
+  font-size: 0.875rem;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Editorial code block */
+.code {
+  font-family: ui-monospace, "SFMono-Regular", "Cascadia Code", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  background: var(--color-ink);
+  color: #f3ede4;
+  padding: 1rem 1.15rem;
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+}
+.code .tok-key { color: #f7a86a; }
+.code .tok-str { color: #c9d7a7; }
+.code .tok-cmt { color: #9a9187; font-style: italic; }
