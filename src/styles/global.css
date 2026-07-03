@@ -8,8 +8,9 @@
   --color-paper: #f5f2ed;        /* warm ivory canvas, never white */
   --color-paper-core: #f0ece6;   /* radial gradient centre */
   --color-ink: #1a1410;          /* warm near-black, never pure black */
-  --color-orange: #f26c0d;       /* THE accent — used sparingly */
+  --color-orange: #f26c0d;       /* THE accent — graphics only (fails text contrast on ivory) */
   --color-orange-soft: #fbe4d2;  /* orange tint for low-emphasis fills */
+  --color-flame: #a8480c;        /* deep orange for TEXT on light — WCAG AA (5.2:1 on paper) */
   --color-blue: #0d5eaf;         /* rare structural second accent */
   --color-muted: #6b6560;        /* subheads, meta */
   --color-line: #d4cfc8;         /* hairlines, separators */

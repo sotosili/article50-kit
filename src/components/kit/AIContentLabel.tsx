@@ -62,6 +62,7 @@ export default function AIContentLabel({
   if (variant === 'overlay') {
     return (
       <span
+        role="img"
         data-ai-content={status}
         data-ai-media={mediaType}
         aria-label={ariaLabel}
@@ -77,6 +78,7 @@ export default function AIContentLabel({
   // caption (default) — sits beneath or beside the media
   return (
     <span
+      role="img"
       data-ai-content={status}
       data-ai-media={mediaType}
       aria-label={ariaLabel}

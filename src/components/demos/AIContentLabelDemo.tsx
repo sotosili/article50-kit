@@ -70,7 +70,7 @@ export default function AIContentLabelDemo() {
         />
         <div>
           <span className="block text-xs font-semibold uppercase tracking-[0.18em] text-muted">Machine-readable</span>
-          <pre className="code mt-2 text-[0.72rem]">{snippet}</pre>
+          <pre className="code mt-2 text-[0.72rem]" tabIndex={0}>{snippet}</pre>
         </div>
       </ControlPanel>
     </div>

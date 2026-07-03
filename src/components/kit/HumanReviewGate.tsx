@@ -39,7 +39,7 @@ export interface HumanReviewGateProps {
 function confidenceLevel(pct: number): { label: string; textClass: string } {
   if (pct >= 80) return { label: 'high confidence', textClass: 'text-ink' };
   if (pct >= 60) return { label: 'medium confidence', textClass: 'text-ink' };
-  return { label: 'low confidence', textClass: 'text-orange' };
+  return { label: 'low confidence', textClass: 'text-flame' };
 }
 
 export default function HumanReviewGate({
@@ -159,7 +159,7 @@ export default function HumanReviewGate({
               />
             </div>
             {isLow ? (
-              <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-orange">
+              <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-flame">
                 <AlertTriangle aria-hidden="true" size={15} strokeWidth={2.25} />
                 Low confidence — review this carefully before approving.
               </p>
