@@ -22,7 +22,7 @@ export default function AIContentLabelDemo() {
       <Stage>
         <figure className="w-full max-w-xs">
           <div className="relative overflow-hidden rounded-xl border border-line">
-            <SampleMedia />
+            <SampleMedia mediaType={mediaType} />
             {variant === 'overlay' ? (
               <div className="absolute left-2 top-2">
                 <AIContentLabel status={status} mediaType={mediaType} variant="overlay" />
