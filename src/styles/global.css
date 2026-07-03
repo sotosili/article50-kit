@@ -10,7 +10,8 @@
   --color-ink: #1a1410;          /* warm near-black, never pure black */
   --color-orange: #f26c0d;       /* THE accent — graphics only (fails text contrast on ivory) */
   --color-orange-soft: #fbe4d2;  /* orange tint for low-emphasis fills */
-  --color-flame: #a8480c;        /* deep orange for TEXT on light — WCAG AA (5.2:1 on paper) */
+  --color-ember: #c85a0c;        /* orange for LARGE display TEXT — WCAG AA large (3.5:1+) */
+  --color-flame: #a8480c;        /* deep orange for small TEXT on light — WCAG AA (4.8:1+) */
   --color-blue: #0d5eaf;         /* rare structural second accent */
   --color-muted: #6b6560;        /* subheads, meta */
   --color-line: #d4cfc8;         /* hairlines, separators */

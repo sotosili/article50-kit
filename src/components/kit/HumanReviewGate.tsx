@@ -172,7 +172,7 @@ export default function HumanReviewGate({
           <div className="mt-4">
             <label htmlFor={reasonId} className="text-sm font-medium text-ink">
               Reason for rejecting
-              {requireReasonOnReject ? <span className="text-orange"> (required)</span> : null}
+              {requireReasonOnReject ? <span className="text-flame"> (required)</span> : null}
             </label>
             <textarea
               id={reasonId}

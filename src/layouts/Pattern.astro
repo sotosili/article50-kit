@@ -20,7 +20,7 @@ const { article, name, accent, intro, duty, index, title } = Astro.props;
 <Base title={title ?? `${name} ${accent} — Article 50 Kit`} description={intro}>
   <article class="mx-auto max-w-5xl px-6 pt-16">
     <div class="flex items-center gap-4" data-reveal>
-      <span class="font-mono text-xs tabular-nums text-orange">PATTERN {index} / 04</span>
+      <span class="font-mono text-xs tabular-nums text-flame">PATTERN {index} / 04</span>
       <span class="h-px flex-1 bg-line"></span>
       <span class="text-xs font-semibold uppercase tracking-[0.28em] text-muted">{article}</span>
     </div>
@@ -30,7 +30,7 @@ const { article, name, accent, intro, duty, index, title } = Astro.props;
       data-reveal
       style="--d:.06s"
     >
-      {name} <em class="italic text-orange">{accent}</em>
+      {name} <em class="italic text-ember">{accent}</em>
     </h1>
 
     <div class="mt-8 grid gap-8 md:grid-cols-[1fr_15rem] md:items-start">
