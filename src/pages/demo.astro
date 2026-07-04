@@ -1,0 +1,164 @@
+---
+import Base from '../layouts/Base.astro';
+import ToneReadDemo from '../components/demos/ToneReadDemo';
+
+const loop = [
+  {
+    tag: 'Article 50(1) · AIDisclosureBadge',
+    title: 'You are told it is AI',
+    body: 'A persistent disclosure sits above the feature. No one has to guess whether a person or a machine is reading their words.',
+  },
+  {
+    tag: 'Article 50(3) · EmotionRecognitionNotice',
+    title: 'You are told it reads emotion',
+    body: 'Estimating tone is emotion recognition. The notice says so before the system acts, and stays visible after you acknowledge it.',
+  },
+  {
+    tag: 'Streaming',
+    title: 'It thinks out loud',
+    body: 'The reasoning streams in before the verdict. You can follow the why, not just the answer - the difference between a black box and an accountable one.',
+  },
+  {
+    tag: 'HumanReviewGate · confidence',
+    title: 'It shows how sure it is',
+    body: 'A real confidence meter, shown as text and a bar, never colour alone. Doubt is made legible instead of hidden behind a fluent sentence.',
+  },
+  {
+    tag: 'HumanReviewGate · the accountable layer',
+    title: 'Low confidence waits for a human',
+    body: 'Below the threshold, the proposal is flagged and held. The AI proposes; a named person approves, overrides, or rejects. It never just acts.',
+  },
+  {
+    tag: 'Override',
+    title: 'You can overrule it',
+    body: 'Correct the tone and your call supersedes the model. The human is the final authority on the record, by design.',
+  },
+  {
+    tag: 'Graceful degradation',
+    title: 'It refuses bad input',
+    body: 'Feed it noise and it declines to answer instead of fabricating a confident reading. The refusal is the feature, not a failure.',
+  },
+];
+---
+
+<Base
+  title="Live demo - Tone Read · Article 50 Kit"
+  description="An accountable AI feature: a tone reader that streams its reasoning, shows real confidence, sends low-confidence calls to a human, allows override, and refuses bad input. Built from the Article 50 Kit."
+>
+  <!-- HERO -->
+  <section class="mx-auto max-w-5xl px-6 pt-16">
+    <div class="flex items-center gap-4" data-reveal>
+      <span class="font-mono text-xs tabular-nums text-flame">LIVE DEMO</span>
+      <span class="h-px flex-1 bg-line"></span>
+      <span class="text-xs font-semibold uppercase tracking-[0.28em] text-muted">The patterns, working together</span>
+    </div>
+
+    <h1
+      class="mt-7 font-display text-5xl font-semibold leading-[1.03] text-ink md:text-7xl"
+      data-reveal
+      style="--d:.06s"
+    >
+      One feature, made <em class="italic text-ember">accountable</em>.
+    </h1>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-[1fr_15rem] md:items-start">
+      <p class="measure text-lg leading-relaxed text-muted" data-reveal style="--d:.12s">
+        The four Kit components are parts. This is the machine. A small AI feature - a tone reader -
+        wired so every step a person meets is honest: it discloses itself, streams its reasoning, shows
+        how sure it is, hands low-confidence calls to a human, accepts an override, and refuses to guess
+        when there is nothing to read.
+      </p>
+      <aside class="border-t border-ink pt-3" data-reveal style="--d:.18s">
+        <p class="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-muted">The loop</p>
+        <p class="mt-2 text-sm leading-relaxed text-ink">
+          Disclose. Reason in the open. Show doubt. Escalate to a human. Allow override. Refuse
+          gracefully.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- THE INTERACTIVE FEATURE -->
+  <section aria-label="Tone Read demo" class="mx-auto mt-14 max-w-3xl px-6">
+    <ToneReadDemo client:load />
+  </section>
+
+  <!-- HOW THE LOOP WORKS -->
+  <section aria-labelledby="loop-heading" class="mx-auto mt-24 max-w-5xl px-6">
+    <div class="flex items-center gap-4">
+      <span class="font-mono text-xs tabular-nums text-flame">01</span>
+      <span class="text-xs tabular-nums text-muted">/ 02</span>
+      <span class="h-px flex-1 bg-line"></span>
+    </div>
+    <h2 id="loop-heading" class="mt-4 font-display text-3xl font-semibold text-ink">The accountable loop</h2>
+
+    <ol class="mt-10 border-t border-line">
+      {
+        loop.map((step, i) => (
+          <li class="grid grid-cols-[auto_1fr] items-baseline gap-x-6 border-b border-line py-6">
+            <span class="font-mono text-sm tabular-nums text-flame">{String(i + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h3 class="font-display text-xl font-semibold text-ink">{step.title}</h3>
+                <span class="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted">{step.tag}</span>
+              </div>
+              <p class="mt-1.5 max-w-2xl leading-relaxed text-muted">{step.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <!-- TEARDOWN -->
+  <section aria-labelledby="teardown-heading" class="mx-auto mt-20 max-w-5xl px-6 pb-8">
+    <div class="flex items-center gap-4">
+      <span class="font-mono text-xs tabular-nums text-flame">02</span>
+      <span class="text-xs tabular-nums text-muted">/ 02</span>
+      <span class="h-px flex-1 bg-line"></span>
+    </div>
+    <h2 id="teardown-heading" class="mt-4 font-display text-3xl font-semibold text-ink">The decisions behind it</h2>
+
+    <div class="mt-8 grid gap-x-10 gap-y-8 md:grid-cols-2">
+      <div>
+        <h3 class="font-display text-lg font-semibold text-ink">Why show a confidence number</h3>
+        <p class="mt-2 leading-relaxed text-muted">
+          An AI that never signals doubt trains people to over-trust it. The number is not there to look
+          precise; it exists to make the low-confidence handoff legible, so a person knows when their
+          judgement is actually needed.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-display text-lg font-semibold text-ink">Why it streams</h3>
+        <p class="mt-2 leading-relaxed text-muted">
+          Streaming here is not decoration. Revealing the reasoning before the verdict lets a person
+          follow the argument and catch a bad one early, rather than being handed a confident conclusion
+          with no way in.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-display text-lg font-semibold text-ink">Why it refuses</h3>
+        <p class="mt-2 leading-relaxed text-muted">
+          The hardest state to build, and the most honest. Most demos fabricate an answer for garbage
+          input. Refusing to read what cannot be read is the accountable choice, and it is treated as a
+          first-class result, not an error.
+        </p>
+      </div>
+      <div>
+        <h3 class="font-display text-lg font-semibold text-ink">Why the model is simulated</h3>
+        <p class="mt-2 leading-relaxed text-muted">
+          The brain is a small deterministic classifier, not a live LLM. The artifact proves the
+          interface loop, and a simulated model lets every state - including low confidence and refusal -
+          be shown on demand, at zero cost, with nothing to leak. Swapping in a real API changes one
+          function, not the UI.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-10 max-w-2xl text-sm leading-relaxed text-muted">
+      These are engineering patterns, not legal advice. Built from the
+      <a href="/" class="font-medium text-ink underline underline-offset-2">Article 50 Kit</a> ·
+      <a href="https://github.com/sotosili/article50-kit" class="font-medium text-ink underline underline-offset-2">source on GitHub</a>.
+    </p>
+  </section>
+</Base>

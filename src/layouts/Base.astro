@@ -67,6 +67,16 @@ const path = Astro.url.pathname.replace(/\/$/, '');
             ))
           }
           <a
+            href="/demo"
+            aria-current={path === '/demo' ? 'page' : undefined}
+            class:list={[
+              'rounded-md px-3 py-1.5 font-medium transition-colors hover:bg-surface',
+              path === '/demo' ? 'bg-surface text-ink' : 'text-flame',
+            ]}
+          >
+            Live demo
+          </a>
+          <a
             href="https://github.com/sotosili/article50-kit"
             class="ml-1 rounded-md border border-line px-3 py-1.5 font-medium text-ink transition-colors hover:bg-surface"
           >

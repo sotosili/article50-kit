@@ -99,7 +99,7 @@ export default function HumanReviewGate({
           ) : (
             <>
               <X aria-hidden="true" size={18} strokeWidth={2.5} className="text-orange" />
-              <span className="text-ink">Rejected — this action will not run</span>
+              <span className="text-ink">Rejected - this action will not run</span>
             </>
           )}
         </p>
@@ -161,7 +161,7 @@ export default function HumanReviewGate({
             {isLow ? (
               <p className="mt-2 flex items-center gap-1.5 text-sm font-medium text-flame">
                 <AlertTriangle aria-hidden="true" size={15} strokeWidth={2.25} />
-                Low confidence — review this carefully before approving.
+                Low confidence - review this carefully before approving.
               </p>
             ) : null}
           </div>
