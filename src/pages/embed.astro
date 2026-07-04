@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+import ToneReadDemo from '../components/demos/ToneReadDemo';
+
+// Chrome-less route: just the interactive demo, meant to be iframed elsewhere
+// (e.g. the portfolio). No nav, no footer, noindex.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tone Read - live demo (embed)</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="mx-auto max-w-2xl px-5 py-8">
+      <ToneReadDemo client:load />
+    </main>
+  </body>
+</html>
