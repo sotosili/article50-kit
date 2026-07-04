@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /embed
+
+Sitemap: https://article50-kit.pages.dev/sitemap.xml

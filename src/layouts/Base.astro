@@ -42,6 +42,27 @@ const path = Astro.url.pathname.replace(/\/$/, '');
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Structured data: an open-source software kit + its author -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareSourceCode',
+      name: 'Article 50 UI Pattern Kit',
+      description:
+        'Accessible, WCAG 2.1 AA React components for EU AI Act Article 50 transparency: AI disclosure, content labelling, an emotion-recognition notice, and a human-in-the-loop review gate.',
+      url: 'https://article50-kit.pages.dev/',
+      codeRepository: 'https://github.com/sotosili/article50-kit',
+      programmingLanguage: ['TypeScript', 'React', 'Astro'],
+      license: 'https://opensource.org/licenses/MIT',
+      keywords: 'EU AI Act, Article 50, AI transparency, accessibility, WCAG, React, design engineering, responsible AI',
+      author: {
+        '@type': 'Person',
+        name: 'Sotiris Iliadis',
+        jobTitle: 'Product Designer & Design Engineer',
+        url: 'https://sotiris-portfolio.pages.dev',
+        sameAs: ['https://github.com/sotosili', 'https://www.linkedin.com/in/sotiris-iliadis'],
+      },
+    })} />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
