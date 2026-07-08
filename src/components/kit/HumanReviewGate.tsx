@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { Check, X, Pencil, AlertTriangle, ShieldCheck, Undo2, Sparkles } from 'lucide-react';
 
 /**
@@ -14,6 +14,10 @@ import { Check, X, Pencil, AlertTriangle, ShieldCheck, Undo2, Sparkles } from 'l
  * - Low confidence is flagged with an icon AND words, not just the accent colour.
  * - The resolution (approved / rejected) is announced through an aria-live region.
  * - Reject-with-reason uses a real, labelled textarea.
+ * - Focus is managed across UI swaps (WCAG 2.4.3): resolving moves focus to the
+ *   status line, opening the reject form focuses the reason field, cancelling
+ *   returns focus to the Reject button, and undo returns it to the card title —
+ *   never dropped to <body> when the previously focused control unmounts.
  */
 export type ReviewStatus = 'pending' | 'approved' | 'rejected';
 
@@ -61,6 +65,25 @@ export default function HumanReviewGate({
   const [reason, setReason] = useState('');
   const current = status ?? internalStatus;
 
+  // Focus management: every state change below swaps out the control that was
+  // focused, so we move focus to the natural next stop instead of losing it.
+  const statusRef = useRef<HTMLParagraphElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const reasonRef = useRef<HTMLTextAreaElement>(null);
+  const rejectBtnRef = useRef<HTMLButtonElement>(null);
+  const prevStatus = useRef(current);
+  const prevRejecting = useRef(rejecting);
+  useEffect(() => {
+    if (current !== 'pending' && prevStatus.current === 'pending') statusRef.current?.focus();
+    if (current === 'pending' && prevStatus.current !== 'pending') titleRef.current?.focus();
+    prevStatus.current = current;
+  }, [current]);
+  useEffect(() => {
+    if (rejecting && !prevRejecting.current) reasonRef.current?.focus();
+    if (!rejecting && prevRejecting.current && current === 'pending') rejectBtnRef.current?.focus();
+    prevRejecting.current = rejecting;
+  }, [rejecting, current]);
+
   const hasConfidence = typeof confidence === 'number';
   const pct = hasConfidence ? Math.round(Math.min(1, Math.max(0, confidence!)) * 100) : 0;
   const level = confidenceLevel(pct);
@@ -90,7 +113,7 @@ export default function HumanReviewGate({
         className={`rounded-xl border border-line bg-surface p-5 ${className}`}
         aria-labelledby={`${liveId}-title`}
       >
-        <p id={liveId} role="status" className="flex items-center gap-2 text-sm font-semibold">
+        <p id={liveId} role="status" ref={statusRef} tabIndex={-1} className="flex items-center gap-2 text-sm font-semibold">
           {approved ? (
             <>
               <ShieldCheck aria-hidden="true" size={18} strokeWidth={2.25} className="text-ink" />
@@ -123,7 +146,7 @@ export default function HumanReviewGate({
   return (
     <div className={`overflow-hidden rounded-xl border border-line bg-paper ${className}`}>
       <div className="flex items-center justify-between gap-3 border-b border-line bg-surface px-5 py-3">
-        <h2 className="font-display text-base font-semibold text-ink">{title}</h2>
+        <h2 ref={titleRef} tabIndex={-1} className="font-display text-base font-semibold text-ink">{title}</h2>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-paper px-2.5 py-1 text-xs font-medium text-ink">
           <Sparkles aria-hidden="true" size={13} strokeWidth={2.5} className="text-orange" />
           <span aria-hidden="true">AI proposal</span>
@@ -176,6 +199,7 @@ export default function HumanReviewGate({
             </label>
             <textarea
               id={reasonId}
+              ref={reasonRef}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={2}
@@ -223,6 +247,7 @@ export default function HumanReviewGate({
             ) : null}
             <button
               type="button"
+              ref={rejectBtnRef}
               onClick={() => setRejecting(true)}
               className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-paper px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-surface"
             >
