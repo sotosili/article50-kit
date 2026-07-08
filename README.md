@@ -5,8 +5,10 @@ live in the interface — telling people they are talking to AI, labelling AI-ge
 notice of emotion recognition, and keeping a human in the loop — built to **WCAG 2.1 AA** and ready to
 drop into a React or Astro product.
 
-Article 50 becomes enforceable on **2 August 2026**. The content-labelling duty (50(4)) has no
-transition period for new content, so the interface work is due now.
+Article 50 becomes enforceable on **2 August 2026** - not delayed by the 2026 Digital Omnibus, which
+deferred only the high-risk regime. Systems already on the market before that date get until
+2 December 2026 for the machine-readable marking (50(2)) only; the visible disclosure duties apply
+from day one, so the interface work is due now.
 
 > These are engineering patterns, not legal advice. They help you meet Article 50 duties in the
 > interface; confirm your specific obligations with qualified counsel.
@@ -21,7 +23,7 @@ responsible-AI and accessibility. MIT licensed.
 | Component | Article 50 | What it does |
 |---|---|---|
 | **`AIDisclosureBadge`** | 50(1) | Tells a person, clearly, that they are interacting with an AI system. |
-| **`AIContentLabel`** | 50(4) | Marks AI-generated / manipulated content (incl. deepfakes), visibly and machine-readably. |
+| **`AIContentLabel`** | 50(2) + 50(4) | Labels AI-generated / manipulated content (incl. deepfakes) visibly; pair with embedded provenance (C2PA) for 50(2)'s machine-readable marking. |
 | **`EmotionRecognitionNotice`** | 50(3) | Informs people exposed to emotion-recognition or biometric-categorisation systems. |
 | **`HumanReviewGate`** | the accountable layer | Holds an AI-proposed action until a named human approves, edits, or rejects it. |
 
