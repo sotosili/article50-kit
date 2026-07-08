@@ -89,7 +89,7 @@ export default function EmotionRecognitionNotice({
             <button
               type="button"
               onClick={handleAck}
-              className="inline-flex items-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-orange"
+              className="inline-flex items-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-flame"
             >
               <Check aria-hidden="true" size={16} strokeWidth={2.5} />
               I understand

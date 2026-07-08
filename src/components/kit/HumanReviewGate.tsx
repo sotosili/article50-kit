@@ -187,7 +187,7 @@ export default function HumanReviewGate({
                 type="button"
                 onClick={confirmReject}
                 disabled={requireReasonOnReject && reason.trim() === ''}
-                className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-orange disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-ink"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-flame disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-ink"
               >
                 <X aria-hidden="true" size={16} strokeWidth={2.5} />
                 Confirm rejection
@@ -206,7 +206,7 @@ export default function HumanReviewGate({
             <button
               type="button"
               onClick={approve}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-orange"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-flame"
             >
               <Check aria-hidden="true" size={16} strokeWidth={2.5} />
               Approve
