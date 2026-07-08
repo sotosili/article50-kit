@@ -22,8 +22,8 @@ const usage = `import HumanReviewGate from './kit/HumanReviewGate';
   article="The accountable layer"
   name="Human Review"
   accent="Gate"
-  intro="AI proposes; a named human decides. This gate holds an AI-suggested action until a person approves, edits, or rejects it — the human-in-the-loop control that turns automation into accountable automation."
-  duty="Not a clause on its own — the human-in-the-loop control that keeps AI actions reviewable and accountable to a named person."
+  intro="AI proposes; a named human decides. This gate holds an AI-suggested action until a person approves, edits, or rejects it - the human-in-the-loop control that turns automation into accountable automation."
+  duty="Not a clause on its own - the human-in-the-loop control that keeps AI actions reviewable and accountable to a named person."
 >
   <Section n="01" id="playground" title="Playground">
     <p class="-mt-1 mb-6 text-muted">Lower the confidence to see the low-confidence flag, then approve or reject.</p>
@@ -58,8 +58,8 @@ const usage = `import HumanReviewGate from './kit/HumanReviewGate';
 
   <Section n="04" id="a11y" title="Accessibility">
     <ul class="list-disc space-y-2 pl-5 text-ink">
-      <li>Confidence is a <code>role="meter"</code> with <code>aria-valuetext</code>, shown as a percentage and a bar — never colour alone.</li>
-      <li>Low confidence is flagged with an icon <em>and</em> the words &ldquo;Low confidence — review carefully&rdquo;.</li>
+      <li>Confidence is a <code>role="meter"</code> with <code>aria-valuetext</code>, shown as a percentage and a bar - never colour alone.</li>
+      <li>Low confidence is flagged with an icon <em>and</em> the words &ldquo;Low confidence - review carefully&rdquo;.</li>
       <li>The resolution is announced through a <code>role="status"</code> live region.</li>
       <li>Reject-with-reason uses a properly labelled <code>textarea</code>; confirm is disabled until a reason is given.</li>
       <li>Every action is a real, focusable button with a visible focus ring.</li>

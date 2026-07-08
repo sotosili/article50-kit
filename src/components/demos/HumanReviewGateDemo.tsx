@@ -9,7 +9,7 @@ export default function HumanReviewGateDemo() {
   const [nonce, setNonce] = useState(0);
 
   const record = (entry: string) =>
-    setLog((l) => [`${new Date().toLocaleTimeString()} — ${entry}`, ...l].slice(0, 5));
+    setLog((l) => [`${new Date().toLocaleTimeString()} - ${entry}`, ...l].slice(0, 5));
 
   return (
     <div className="grid gap-5 md:grid-cols-2">
@@ -21,7 +21,7 @@ export default function HumanReviewGateDemo() {
             confidence={confidence / 100}
             requireReasonOnReject={requireReason}
             onApprove={() => record('Approved the refund')}
-            onReject={(reason) => record(`Rejected${reason ? ` — "${reason}"` : ''}`)}
+            onReject={(reason) => record(`Rejected${reason ? ` - "${reason}"` : ''}`)}
             onEdit={() => record('Opened for editing')}
           >
             The customer reported a duplicate charge on 28 June. The model matched two identical

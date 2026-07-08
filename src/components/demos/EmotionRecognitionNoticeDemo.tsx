@@ -22,7 +22,7 @@ export default function EmotionRecognitionNoticeDemo() {
               infoHref="#privacy"
             />
           ) : (
-            <p className="text-sm text-muted">System is off — no notice is shown.</p>
+            <p className="text-sm text-muted">System is off - no notice is shown.</p>
           )}
         </div>
       </Stage>
@@ -38,7 +38,7 @@ export default function EmotionRecognitionNoticeDemo() {
           Reset acknowledgement
         </button>
         <p className="text-sm leading-relaxed text-muted">
-          After &ldquo;I understand&rdquo;, the notice collapses to a persistent indicator — the duty to
+          After &ldquo;I understand&rdquo;, the notice collapses to a persistent indicator - the duty to
           inform does not end when the banner is dismissed.
         </p>
       </ControlPanel>

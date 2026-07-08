@@ -22,8 +22,8 @@ const usage = `import AIContentLabel from './kit/AIContentLabel';
   article="Articles 50(2) + 50(4)"
   name="AI Content"
   accent="Label"
-  intro="Label AI-generated or AI-manipulated content — including deepfakes — clearly in the interface. This is the visible half of content transparency: 50(4) requires deployers to disclose deep fakes and AI text on matters of public interest, while 50(2) requires providers to also mark outputs machine-readably via embedded provenance. Applies 2 August 2026; systems already on the market before that date have until 2 December 2026 for the machine-readable marking only."
-  duty="Disclose deep fakes and AI-generated public-interest text visibly (50(4), deployers). Ensure outputs carry machine-readable marking via embedded provenance such as C2PA (50(2), providers) — this label is the human-facing half."
+  intro="Label AI-generated or AI-manipulated content - including deepfakes - clearly in the interface. This is the visible half of content transparency: 50(4) requires deployers to disclose deep fakes and AI text on matters of public interest, while 50(2) requires providers to also mark outputs machine-readably via embedded provenance. Applies 2 August 2026; systems already on the market before that date have until 2 December 2026 for the machine-readable marking only."
+  duty="Disclose deep fakes and AI-generated public-interest text visibly (50(4), deployers). Ensure outputs carry machine-readable marking via embedded provenance such as C2PA (50(2), providers) - this label is the human-facing half."
 >
   <Section n="01" id="playground" title="Playground">
     <p class="-mt-1 mb-6 text-muted">Pick a status, media type, and placement. The machine-readable markup updates with it.</p>
@@ -57,9 +57,9 @@ const usage = `import AIContentLabel from './kit/AIContentLabel';
   <Section n="04" id="a11y" title="Accessibility & detectability">
     <ul class="list-disc space-y-2 pl-5 text-ink">
       <li><strong>Visible</strong> label a person can read, plus an <code>aria-label</code> with the full sentence for screen readers.</li>
-      <li><code>data-ai-content</code> and <code>data-ai-media</code> attributes give tooling a UI-layer signal — useful for detection in your own stack, but not the machine-readable marking Article 50(2) requires.</li>
+      <li><code>data-ai-content</code> and <code>data-ai-media</code> attributes give tooling a UI-layer signal - useful for detection in your own stack, but not the machine-readable marking Article 50(2) requires.</li>
       <li>The overlay variant sits on an ink scrim at 85% opacity to keep text contrast at AA over any image.</li>
-      <li>Pair it with embedded provenance (e.g. C2PA / watermarking / metadata) — that satisfies 50(2)'s machine-readable duty; this label is the human-facing half.</li>
+      <li>Pair it with embedded provenance (e.g. C2PA / watermarking / metadata) - that satisfies 50(2)'s machine-readable duty; this label is the human-facing half.</li>
     </ul>
   </Section>
 </Pattern>
