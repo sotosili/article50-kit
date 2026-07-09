@@ -2,15 +2,19 @@ import { Sparkles, Wand2, AudioLines, Video, Image as ImageIcon, FileText } from
 import type { CSSProperties, ReactNode } from 'react';
 
 /**
- * AIContentLabel — EU AI Act Article 50(4)
+ * AIContentLabel — EU AI Act Articles 50(2) + 50(4)
  * -------------------------------------------------------------
- * Marks AI-generated or AI-manipulated content (incl. deepfakes) as artificial,
- * in a visible AND machine-readable way. Article 50(4) has no transition period
- * for new content, so this is the most time-sensitive pattern in the kit.
+ * The visible, human-facing half of content transparency: labels AI-generated
+ * or AI-manipulated content (incl. deep fakes) clearly in the UI.
  *
- * - Visible: a clear label a person can read.
- * - Machine-readable: a `data-ai-content` attribute other software can detect,
- *   plus an `aria-label` so assistive tech announces it.
+ * - Article 50(4) (deployers): visibly disclose deep fakes and AI-generated
+ *   text published on matters of public interest. This label does that.
+ * - Article 50(2) (providers): outputs must ALSO be marked in a machine-readable
+ *   format - embedded provenance such as watermarking / metadata / C2PA. The
+ *   `data-ai-content` attribute here is a UI-layer signal for tooling, NOT that
+ *   marking - pair this label with embedded provenance to satisfy 50(2).
+ * - Applies from 2 Aug 2026. Systems on the market before that date have until
+ *   2 Dec 2026 for the machine-readable marking only (2026 Digital Omnibus).
  * - As an overlay on media, keeps AA contrast by sitting on an ink scrim.
  */
 export type AIContentStatus = 'ai-generated' | 'ai-assisted' | 'ai-edited';

@@ -8,7 +8,7 @@ interface Props {
   name: string;
   accent: string;
   intro: string;
-  /** Plain-language statement of the legal duty — shown as an editorial margin note. */
+  /** Plain-language statement of the legal duty - shown as an editorial margin note. */
   duty: string;
   /** Two-digit pattern number, e.g. "01". */
   index: string;
@@ -17,7 +17,7 @@ interface Props {
 const { article, name, accent, intro, duty, index, title } = Astro.props;
 ---
 
-<Base title={title ?? `${name} ${accent} — Article 50 Kit`} description={intro}>
+<Base title={title ?? `${name} ${accent} - Article 50 Kit`} description={intro}>
   <article class="mx-auto max-w-5xl px-6 pt-16">
     <div class="flex items-center gap-4" data-reveal>
       <span class="font-mono text-xs tabular-nums text-flame">PATTERN {index} / 04</span>

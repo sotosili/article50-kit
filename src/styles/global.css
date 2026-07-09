@@ -40,9 +40,11 @@ body {
   min-height: 100dvh;
 }
 
-/* Visible, on-brand focus ring for every interactive element (WCAG 2.4.7) */
+/* Visible, on-brand focus ring for every interactive element (WCAG 2.4.7).
+   Ember, not orange: the ring must hit 3:1 against paper/surface (WCAG 1.4.11)
+   and orange (#f26c0d) only reaches ~2.7:1 on ivory. Ember passes at ~3.8:1. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 2px solid var(--color-orange);
+  outline: 2px solid var(--color-ember);
   outline-offset: 2px;
   border-radius: 3px;
 }

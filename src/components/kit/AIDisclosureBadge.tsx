@@ -71,7 +71,7 @@ export default function AIDisclosureBadge({
         <Sparkles aria-hidden="true" size={15} strokeWidth={2.25} className="text-orange" />
         <span>
           {label}
-          <span className="sr-only"> — {description}</span>
+          <span className="sr-only"> - {description}</span>
         </span>
       </span>
     );

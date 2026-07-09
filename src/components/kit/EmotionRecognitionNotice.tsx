@@ -1,4 +1,4 @@
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Eye, Check, Info } from 'lucide-react';
 
 /**
@@ -11,6 +11,8 @@ import { Eye, Check, Info } from 'lucide-react';
  * - Rendered as a labelled region with a heading; not a modal, so it never traps focus.
  * - Acknowledgement is a real button; on acknowledge it collapses to a persistent,
  *   still-visible indicator (the obligation to inform does not end on dismissal).
+ * - On acknowledge, keyboard focus moves to the persistent indicator instead of
+ *   being dropped to <body> when the button unmounts (WCAG 2.4.3).
  * - Status changes are announced via aria-live.
  */
 export interface EmotionRecognitionNoticeProps {
@@ -41,6 +43,15 @@ export default function EmotionRecognitionNotice({
   const [internalAck, setInternalAck] = useState(false);
   const isAck = acknowledged ?? internalAck;
 
+  // The acknowledge button unmounts with the full notice; move focus to the
+  // collapsed indicator so keyboard/screen-reader users are not stranded.
+  const indicatorRef = useRef<HTMLParagraphElement>(null);
+  const wasUnacknowledged = useRef(false);
+  useEffect(() => {
+    if (isAck && wasUnacknowledged.current) indicatorRef.current?.focus();
+    wasUnacknowledged.current = !isAck;
+  }, [isAck]);
+
   const handleAck = () => {
     setInternalAck(true);
     onAcknowledge?.();
@@ -58,6 +69,8 @@ export default function EmotionRecognitionNotice({
     return (
       <p
         role="status"
+        ref={indicatorRef}
+        tabIndex={-1}
         className={`inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-xs font-medium text-ink ${className}`}
       >
         <Eye aria-hidden="true" size={14} strokeWidth={2.25} className="text-orange" />
@@ -89,7 +102,7 @@ export default function EmotionRecognitionNotice({
             <button
               type="button"
               onClick={handleAck}
-              className="inline-flex items-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-orange"
+              className="inline-flex items-center gap-2 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-flame"
             >
               <Check aria-hidden="true" size={16} strokeWidth={2.5} />
               I understand

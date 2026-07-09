@@ -180,7 +180,7 @@ export default function ToneReadDemo() {
             type="button"
             onClick={() => run(input)}
             disabled={input.trim() === '' || phase === 'streaming'}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-orange disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-ink"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-paper transition-colors hover:bg-flame disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-ink"
           >
             <Radar aria-hidden="true" size={16} strokeWidth={2.25} />
             {phase === 'streaming' ? 'Reading…' : 'Read the tone'}
