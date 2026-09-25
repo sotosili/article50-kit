@@ -8,7 +8,7 @@ import type { CSSProperties } from 'react';
  * interacting with an AI system. Use it wherever a user could mistake AI output
  * for a human (chat, voice UI, generated replies, agents).
  *
- * Accessibility (WCAG 2.1 AA):
+ * Accessibility (WCAG 2.2 AA):
  * - role="note" so assistive tech announces it as an aside, not decoration.
  * - The full sentence is always available to screen readers, even when the
  *   visible label is shortened to a chip.

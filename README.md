@@ -2,7 +2,7 @@
 
 **Accessible React components for EU AI Act Article 50 transparency.** The parts of the AI Act that
 live in the interface — telling people they are talking to AI, labelling AI-generated content, giving
-notice of emotion recognition, and keeping a human in the loop — built to **WCAG 2.1 AA** and ready to
+notice of emotion recognition, and keeping a human in the loop — built to **WCAG 2.2 AA** and ready to
 drop into a React or Astro product.
 
 Article 50 becomes enforceable on **2 August 2026** - not delayed by the 2026 Digital Omnibus, which
@@ -64,7 +64,7 @@ import HumanReviewGate from './components/kit/HumanReviewGate';
 
 ## Accessibility
 
-Every component is built to WCAG 2.1 AA — the standard the AI Act's own accessibility requirements point to:
+Every component is built to WCAG 2.2 AA — the standard the AI Act's own accessibility requirements point to:
 
 - Semantic roles (`note`, `region`, `status`, `meter`) so assistive tech announces meaning, not decoration.
 - Meaning never depends on colour alone — icons are decorative and text always carries the message.
