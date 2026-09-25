@@ -7,7 +7,7 @@ import { Eye, Check, Info } from 'lucide-react';
  * Informs a natural person that they are exposed to an emotion-recognition or
  * biometric-categorisation system, and what it processes — BEFORE it acts on them.
  *
- * Accessibility (WCAG 2.1 AA):
+ * Accessibility (WCAG 2.2 AA):
  * - Rendered as a labelled region with a heading; not a modal, so it never traps focus.
  * - Acknowledgement is a real button; on acknowledge it collapses to a persistent,
  *   still-visible indicator (the obligation to inform does not end on dismissal).

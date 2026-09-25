@@ -2,7 +2,7 @@
   "name": "article50-kit",
   "type": "module",
   "version": "0.1.0",
-  "description": "Accessible, WCAG 2.1 AA React components for EU AI Act Article 50 transparency — AI disclosure, AI-content labelling, emotion-recognition notice, and a human-in-the-loop review gate.",
+  "description": "Accessible, WCAG 2.2 AA React components for EU AI Act Article 50 transparency — AI disclosure, AI-content labelling, emotion-recognition notice, and a human-in-the-loop review gate.",
   "author": "Sotiris Iliadis",
   "license": "MIT",
   "engines": {

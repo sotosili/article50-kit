@@ -8,7 +8,7 @@ import { Check, X, Pencil, AlertTriangle, ShieldCheck, Undo2, Sparkles } from 'l
  * it before it takes effect. This is the "human-in-the-loop" control the market
  * asks for and the ethical centre of the kit: AI proposes, a named human decides.
  *
- * Accessibility (WCAG 2.1 AA):
+ * Accessibility (WCAG 2.2 AA):
  * - Confidence is a role="meter" with aria-valuetext, and is shown as text + a bar
  *   (never colour alone).
  * - Low confidence is flagged with an icon AND words, not just the accent colour.
